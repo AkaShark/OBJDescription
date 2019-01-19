@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (Sharker_description)
-- (void)sharker_exchangeSelector: (SEL)oldSel andNewSelector:(SEL)newSel;
+
 @end
 
 NS_ASSUME_NONNULL_END

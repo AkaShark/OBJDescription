@@ -8,8 +8,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
-#import "NSObject+Sharker_description.h"
-#import "NSArray+Sharker_log.h"
+
 
 @interface ViewController ()
 
@@ -21,7 +20,7 @@
     [super viewDidLoad];
     Person *person = [[Person alloc] init];
     NSArray *array = @[@"哈哈",@"111",@"adv"];
-    NSLog(@"%@",array);
+    NSLog(@"%@",person);
 }
 
 
