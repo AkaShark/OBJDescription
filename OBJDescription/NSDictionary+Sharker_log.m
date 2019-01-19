@@ -12,6 +12,9 @@
 
 #ifdef DEBUG
 
+- (NSString *)sharker_descriptionisObjc{
+    return [self sharker_descriptionWithLevel:2];
+}
 - (NSString *)description
 {
     return [self sharker_descriptionWithLevel:1];
@@ -59,7 +62,7 @@
             [retString appendString:str];
         }
     }];
-    if ([retString hasPrefix:@","]) {
+    if ([retString hasSuffix:@","]) {
         [retString deleteCharactersInRange:NSMakeRange(retString.length-1, 1)];
     }
     //    添加 }

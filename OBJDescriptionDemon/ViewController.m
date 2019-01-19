@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
+#import "Dog.h"
 
 
 @interface ViewController ()
@@ -18,9 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    Person *person = [[Person alloc] init];
-    NSArray *array = @[@"哈哈",@"111",@"adv"];
-    NSLog(@"%@",person);
+    NSArray *arr = @[[Dog new]];
+    NSDictionary *dic = @{@"dog":[Dog new]};
+    NSLog(@"%@\n\n%@",arr,dic);
 }
 
 
