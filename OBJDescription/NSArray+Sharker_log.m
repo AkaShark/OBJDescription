@@ -55,11 +55,13 @@
             str = [NSString stringWithFormat:@"\n%@%@,",subSapce,str];
             [retString appendString:str];
         }else{
-            NSString *subString = [NSString stringWithFormat:@"\n%@%@",subSapce,obj];
+            NSMutableString *subString = [NSMutableString stringWithFormat:@"\n%@%@",subSapce,obj];
+            [subString deleteCharactersInRange:NSMakeRange(2, 1)];
+            [subString deleteCharactersInRange:NSMakeRange(subString.length-1, 1)];
             [retString appendString:subString];
         }
     }];
-    if ([retString hasPrefix:@","]) {
+    if ([retString hasSuffix:@","]) { //判断是否,结尾 删除,使得最后一个元素不含,
         [retString deleteCharactersInRange:NSMakeRange(retString.length-1, 1)];
     }
 //    添加]

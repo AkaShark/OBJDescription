@@ -8,6 +8,7 @@
 
 #import "NSObject+Sharker_description.h"
 #import <objc/runtime.h>
+#import "NSDictionary+Sharker_log.h"
 
 @implementation NSObject (Sharker_description)
 
@@ -15,7 +16,7 @@
 - (NSString *)description
 {
     NSDictionary *dic = [self sharker_ivars];
-    return [dic description];
+    return [dic sharker_descriptionisObjc];
 }
 
 // 获取成员变量
@@ -33,17 +34,16 @@
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"@" withString:@""];
-        [dic setObject:[self valueForKey:nameStr] forKey:[NSString stringWithFormat:@"%@",nameStr]];
+//        如果是NSObject崩溃了 加安全判断 isa 使用KVC崩溃
+        if (![nameStr isEqualToString:@"isa"]) {
+            [dic setObject:[self valueForKey:nameStr] forKey:[NSString stringWithFormat:@"%@",nameStr]];
+        }else{
+            [dic setObject:@"Can't use in Object" forKey:@"import"];
+        }
+        
     }
     free(ivars);
     return [dic copy];
 }
-
-//// hook 方法
-//+ (void)sharker_exchangeSelector: (SEL)oldSel andNewSelector:(SEL)newSel{
-//    Method oldMethod = class_getClassMethod([self class], oldSel);
-//    Method newMethod = class_getClassMethod([self class], newSel);
-//    method_exchangeImplementations(oldMethod, newMethod);
-//}
 
 @end

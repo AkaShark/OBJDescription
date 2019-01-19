@@ -19,6 +19,7 @@
 		0AF7FEE021F1F5A000E3AFEF /* NSArray+Sharker_log.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7FEDF21F1F5A000E3AFEF /* NSArray+Sharker_log.m */; };
 		0AF7FEE321F1F63400E3AFEF /* NSDictionary+Sharker_log.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7FEE221F1F63400E3AFEF /* NSDictionary+Sharker_log.m */; };
 		0AF7FEE621F2294D00E3AFEF /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7FEE521F2294D00E3AFEF /* Person.m */; };
+		0AF7FEE921F3356D00E3AFEF /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7FEE821F3356D00E3AFEF /* Dog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		0AF7FEE221F1F63400E3AFEF /* NSDictionary+Sharker_log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Sharker_log.m"; sourceTree = "<group>"; };
 		0AF7FEE421F2294D00E3AFEF /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		0AF7FEE521F2294D00E3AFEF /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		0AF7FEE721F3356D00E3AFEF /* Dog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		0AF7FEE821F3356D00E3AFEF /* Dog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +96,8 @@
 		0AF7FE9721F1F14100E3AFEF = {
 			isa = PBXGroup;
 			children = (
-				0AF7FEA221F1F14100E3AFEF /* OBJDescription */,
+				0AF7FEEA21F3388600E3AFEF /* OBJDescription */,
+				0AF7FEA221F1F14100E3AFEF /* OBJDescriptionDemon */,
 				0AF7FEBB21F1F14200E3AFEF /* OBJDescriptionTests */,
 				0AF7FEC621F1F14200E3AFEF /* OBJDescriptionUITests */,
 				0AF7FEA121F1F14100E3AFEF /* Products */,
@@ -110,7 +114,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0AF7FEA221F1F14100E3AFEF /* OBJDescription */ = {
+		0AF7FEA221F1F14100E3AFEF /* OBJDescriptionDemon */ = {
 			isa = PBXGroup;
 			children = (
 				0AF7FEA321F1F14100E3AFEF /* AppDelegate.h */,
@@ -119,19 +123,15 @@
 				0AF7FEA721F1F14100E3AFEF /* ViewController.m */,
 				0AF7FEE421F2294D00E3AFEF /* Person.h */,
 				0AF7FEE521F2294D00E3AFEF /* Person.m */,
-				0AF7FEE121F1F63400E3AFEF /* NSDictionary+Sharker_log.h */,
-				0AF7FEE221F1F63400E3AFEF /* NSDictionary+Sharker_log.m */,
-				0AF7FEDE21F1F5A000E3AFEF /* NSArray+Sharker_log.h */,
-				0AF7FEDF21F1F5A000E3AFEF /* NSArray+Sharker_log.m */,
-				0AF7FED521F1F3A500E3AFEF /* NSObject+Sharker_description.h */,
-				0AF7FED621F1F3A500E3AFEF /* NSObject+Sharker_description.m */,
+				0AF7FEE721F3356D00E3AFEF /* Dog.h */,
+				0AF7FEE821F3356D00E3AFEF /* Dog.m */,
 				0AF7FEA921F1F14100E3AFEF /* Main.storyboard */,
 				0AF7FEAC21F1F14200E3AFEF /* Assets.xcassets */,
 				0AF7FEAE21F1F14200E3AFEF /* LaunchScreen.storyboard */,
 				0AF7FEB121F1F14200E3AFEF /* Info.plist */,
 				0AF7FEB221F1F14200E3AFEF /* main.m */,
 			);
-			path = OBJDescription;
+			path = OBJDescriptionDemon;
 			sourceTree = "<group>";
 		};
 		0AF7FEBB21F1F14200E3AFEF /* OBJDescriptionTests */ = {
@@ -150,6 +150,19 @@
 				0AF7FEC921F1F14200E3AFEF /* Info.plist */,
 			);
 			path = OBJDescriptionUITests;
+			sourceTree = "<group>";
+		};
+		0AF7FEEA21F3388600E3AFEF /* OBJDescription */ = {
+			isa = PBXGroup;
+			children = (
+				0AF7FEE121F1F63400E3AFEF /* NSDictionary+Sharker_log.h */,
+				0AF7FEE221F1F63400E3AFEF /* NSDictionary+Sharker_log.m */,
+				0AF7FEDE21F1F5A000E3AFEF /* NSArray+Sharker_log.h */,
+				0AF7FEDF21F1F5A000E3AFEF /* NSArray+Sharker_log.m */,
+				0AF7FED521F1F3A500E3AFEF /* NSObject+Sharker_description.h */,
+				0AF7FED621F1F3A500E3AFEF /* NSObject+Sharker_description.m */,
+			);
+			path = OBJDescription;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +297,7 @@
 			files = (
 				0AF7FEE321F1F63400E3AFEF /* NSDictionary+Sharker_log.m in Sources */,
 				0AF7FEA821F1F14100E3AFEF /* ViewController.m in Sources */,
+				0AF7FEE921F3356D00E3AFEF /* Dog.m in Sources */,
 				0AF7FEE621F2294D00E3AFEF /* Person.m in Sources */,
 				0AF7FEB321F1F14200E3AFEF /* main.m in Sources */,
 				0AF7FEA521F1F14100E3AFEF /* AppDelegate.m in Sources */,
@@ -461,7 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8668L864WZ;
-				INFOPLIST_FILE = OBJDescription/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OBJDescriptionDemon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8668L864WZ;
-				INFOPLIST_FILE = OBJDescription/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OBJDescriptionDemon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
