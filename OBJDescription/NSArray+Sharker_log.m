@@ -10,29 +10,77 @@
 #import "NSObject+Sharker_description.h"
 @implementation NSArray (Sharker_log)
 
-+ (void)load
-{
-    [self sharker_exchangeSelector:@selector(descriptionWithLocale:) andNewSelector:@selector(sharker_exchangeSelector:andNewSelector:)];
-}
+#ifdef DEBUG
 
-- (NSString *)sharker_descriptionWithLocale:(id)locale
-{
-    NSString *desc = [self sharker_descriptionWithLocale:locale];
-    desc = [self replaceUnicode:desc];
-    return desc;
+- (NSString *)description{
+    return [self sharker_descriptionWithLevel:1];
 }
-
-- (NSString *)replaceUnicode:(NSString *)unicodeStr {
-    NSString *tempStr1 = [unicodeStr stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
-    NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
-    NSString *tempStr3 = [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
-    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
-                                                           mutabilityOption:NSPropertyListImmutable
-                                                                     format:NULL
-                                                           errorDescription:NULL];
-    return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n" withString:@"\n"];
+- (NSString *)descriptionWithLocale:(id)locale{
+    return [self sharker_descriptionWithLevel:1];
+}
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level{
+    return [self sharker_descriptionWithLevel:(int) level];
 }
 
 
+/**
+ 格式化输出打印
+
+ @param level 当前数组的层级 最少为1
+ @return 返回格式化字符串
+ */
+- (NSString *)sharker_descriptionWithLevel:(int)level{
+//    值距离边界的空格
+    NSString *subSapce = [self sharker_getSapceWithLevel:level];
+//    [] 距离边界的空格
+    NSString *space = [self sharker_getSapceWithLevel:level-1];
+    NSMutableString *retString = [[NSMutableString alloc] init];
+//    添加 [
+    [retString appendString:@"["];
+//   添加 value
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[NSString class]]) {
+            NSString *value = (NSString *)obj;
+            NSString *subString = [NSString stringWithFormat:@"\n%@\"%@\",",subSapce,value];
+            [retString appendString:subString];
+        }else if ([obj isKindOfClass:[NSArray class]]){
+            NSArray *arr = (NSArray *)obj;
+            NSString *str = [arr sharker_descriptionWithLevel:level+1];// 递归
+            str = [NSString stringWithFormat:@"\n%@%@,",subSapce,str];
+            [retString appendString:str];
+        }else if ([obj isKindOfClass:[NSDictionary class]]){
+            NSDictionary *dic = (NSDictionary *)obj;
+//            调用dic的打印方法
+            NSString *str = [dic descriptionWithLocale:nil indent:level +1];
+            str = [NSString stringWithFormat:@"\n%@%@,",subSapce,str];
+            [retString appendString:str];
+        }else{
+            NSString *subString = [NSString stringWithFormat:@"\n%@%@",subSapce,obj];
+            [retString appendString:subString];
+        }
+    }];
+    if ([retString hasPrefix:@","]) {
+        [retString deleteCharactersInRange:NSMakeRange(retString.length-1, 1)];
+    }
+//    添加]
+    [retString appendString:[NSString stringWithFormat:@"\n%@]",space]];
+    return retString;
+}
+
+
+/**
+ 根据层级返回前面的sapce
+
+ @param level 层级
+ @return 空格
+ */
+- (NSString *)sharker_getSapceWithLevel:(int)level{
+    NSMutableString *muStr = [[NSMutableString alloc]init];
+    for (int i = 0; i<level; i++) {
+        [muStr appendString:@"\t"];
+    }
+    return muStr;
+}
+
+#endif
 @end

@@ -33,17 +33,17 @@
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
         typeStr = [typeStr stringByReplacingOccurrencesOfString:@"@" withString:@""];
-        [dic setObject:[self valueForKey:nameStr] forKey:[NSString stringWithFormat:@"<%@> %@",typeStr,nameStr]];
+        [dic setObject:[self valueForKey:nameStr] forKey:[NSString stringWithFormat:@"%@",nameStr]];
     }
     free(ivars);
     return [dic copy];
 }
 
-// hook 方法
-- (void)sharker_exchangeSelector: (SEL)oldSel andNewSelector:(SEL)newSel{
-    Method oldMethod = class_getClassMethod([self class], oldSel);
-    Method newMethod = class_getClassMethod([self class], newSel);
-    method_exchangeImplementations(oldMethod, newMethod);
-}
+//// hook 方法
+//+ (void)sharker_exchangeSelector: (SEL)oldSel andNewSelector:(SEL)newSel{
+//    Method oldMethod = class_getClassMethod([self class], oldSel);
+//    Method newMethod = class_getClassMethod([self class], newSel);
+//    method_exchangeImplementations(oldMethod, newMethod);
+//}
 
 @end
