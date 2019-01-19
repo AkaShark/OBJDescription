@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/chinesemanbobo/PPKit.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/AkaShark/OBJDescription.git", :tag => s.version }
 
   s.source_files = 'OBJDescription/**/*'
 
